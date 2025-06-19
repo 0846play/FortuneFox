@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Fox</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="telaLogin" class="tela ativa">
+    <div id="fundo">
+        <div id="loginHome">
+            <div id="logoLogin"><img src="src/logo-png.png" alt="tipografia"></div>
+            <div id="loginBox">
+                <input type="text" name="user" id="user" placeholder="Usuário">
+                <input type="password" name="senha" id="senha" placeholder="Senha">
+                <button id="botaoLogin" onclick="logar()">Entrar</button> 
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="telaHome" class="tela">
+    <div id="fundo">
+        <div id="home">
+            <div id="header">
+                <div id="logoHome">
+                    <img src="src/logo-png.png" alt="logo">
+                </div>
+                <div id="userInfo">
+                    Bem-vindo, <span id="nomeUsuario">Usuário</span>!
+                    <button id="botaoSair" onclick="voltar()">Voltar</button>
+                </div>
+            </div>
+
+            <div id="conteudoHome"> <!--colocar os jogos aqui em formas de quadrados acessaveis-->
+                <div id="mascara"></div>
+                <div id="fundoGrid"></div>
+                <div class="grid-2x2">
+                    <button id="btRoleta" onclick="roleta()">ROLETA</button>
+                    <button id="btFoguete" onclick="foguete()">FOGUETINHO</button>
+                    <button id="btBicho" onclick="jogoDoBicho()">JOGO DO BICHO</button>
+                    <button id="btMiner" onclick="miner()">MINER</button>
+                </div>
+            </div>
+
+            <div id="roleta"></div>
+            <div id="foguete">
+                <div id="multiplicadorDisplay">0.00x</div>
+                <div id="statusFoguetinho">Faça sua aposta e clique em "Decolar"!</div>
+                <div style="display: flex; justify-content: center;">
+                    <button id="btDecolar">Decolar</button>
+                    <button id="btParar" disabled>Parar</button>
+                </div>
+            </div>
+            <div id="bicho">
+                <div id="bichoMenu">
+                    <div id="tituloUltimoSorteio" class="tituloBicho">Último sorteio</div>
+                    <div id="ultimoSorteio" class="txtBicho"></div>
+                    <div id="horaUltimoSorteio" class="txtBicho"></div>
+                    <div id="apostaFeita" class="txtBicho"></div>
+                    <div id="valorApostaFeita" class="txtBicho"></div>
+                    <div id="tituloApostaBicho" class="tituloBicho">Apostar</div>
+                    <div>
+                        <input id="numApostaBicho" placeholder="Número (0-99)" type="number" min="0" max="99">
+                        <button id="apostarBicho">Apostar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="miner"></div>
+
+            <div id="financeiroJogos">
+                <div id="tituloSaldo">Saldo</div>
+                <div id="saldo"></div>
+                <input type="text" id="valorAposta" placeholder="Valor da aposta">
+                <button id="apostar" onclick="apostar(0)">Apostar</button>
+                <button id="retirar" onclick="apostar(1)">Retirar</button>
+                <div id="txtValorApostando">Valor apostando:</div>
+                <div id="valorApostando"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
