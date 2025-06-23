@@ -1,0 +1,467 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('src/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.tela{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+#fundo, #fundo2 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginHome{
+    background-color: black;
+    opacity: 95%;
+    height: 90vh;
+    max-height: 400px;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+#logoLogin img{
+    width: 200px;
+    height: auto;
+}
+#loginBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+#user, #senha{
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+#botaoLogin{
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    color: #ffeaa7;
+    font-size: 16px;
+    border: none;
+    background-color: #0f0f0f;
+    cursor:pointer;
+    transition: background-color 0.3s;
+}
+#botaoLogin:active{
+    background-color: #ffeaa7;
+    color: #0f0f0f;
+    transform: scale(1.05);
+}
+
+#home{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+    #mascara { /* máscara preta (O jeito que tava antes na home, tava deixando tudo transparente) */
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+    #header{
+        width: 100%;
+        height: 10px;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2000;
+        box-sizing: border-box;
+        color: white;
+        padding: 15px 20px;
+        background-color: transparent;
+        top: 25px;
+        left: 0;
+    }
+    #logoHome img{
+        width: 80px;
+        height: auto;
+    }
+    #fundoGrid{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80vw;
+        height: 80vw;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius:15px;
+        background-color:black;
+        opacity: 0.8;
+        z-index: 1;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #grid-2x2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        z-index:2;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-color:#ffeaa7;
+        border-style: solid;
+        border-width: 1px;
+    }
+    #grid-2x2 button{
+        border: 10px solid #ffeaa7;
+        border-radius: 10px;
+        width: 30vw;
+        height: 10vh;
+        font-size: 3vw;
+        color:#ffeaa7;
+        background-color:#0f0f0f;
+        z-index:2;
+        cursor: pointer;
+    }
+    #grid-2x2 button:active {
+        transform: scale(1.05);
+        background-color: #ffeaa7;
+        color: #0f0f0f;
+    }
+
+#financeiroJogos {
+    position: fixed;
+    top: 60px;
+    left: 30px;
+    width: 300px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    font-family: sans-serif;
+    display: none;
+}
+    .infoFinanceiro {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+    }
+    .financeiroLandscape{
+        display: none;
+    }
+    #tituloSaldo {
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    #saldo {
+        font-size: 18px;
+        margin-top: 0px;
+    }
+    #valorAposta {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+        border: 1px solid #000;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    #txtValorApostando {
+        font-size: 16px;
+        margin-top: 8px;
+        justify-self: center;
+    }
+
+    
+#roletaRoleta {
+    position: absolute;
+    bottom: -10vh;
+}
+    .botao-roleta {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s, background-color 0.3s;
+        background-color: #0f0f0f;
+        color: white;
+        border: none;
+        border-radius: 8px;
+    }
+    .botao-roleta:active {
+        transform: scale(1.05);
+        background-color: #ffeaa7;
+        color: #0f0f0f;
+    }
+
+
+#foguete {
+    display: none;
+}
+    #menuFoguete{
+        display: flex;
+        width: 80vw;
+        z-index: 1;
+        position: fixed;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+        border-radius: 15px;
+        color: white;
+        font-family: sans-serif;
+    }
+    #foguete button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #0f0f0f;
+        color: #ffeaa7;
+        border: none;
+        border-radius: 8px;
+        margin: 10px;
+        transition-property: transform, background-color;
+        transition-duration: 0.5s;
+    }
+    #foguete button:active {
+        transform: scale(1.05);
+        background-color: #ffeaa7;
+        color: #0f0f0f;
+    }
+    #foguete button:disabled {
+        background-color: #666;
+        color: #0f0f0f;
+        cursor: not-allowed;
+    }
+    #multiplicadorDisplay {
+        font-size: 70px;
+        font-weight: bold;
+        color: #ffeaa7;
+        margin-bottom: 0px;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #statusFoguete {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+        min-height: 20px;
+    }
+    #displayFogueteAnimation{
+        background-color: #000;
+        position: fixed;
+        bottom: 30px;
+        height: 300px;
+        width: 300px;
+        transform: translateY(+80%);
+        border-color:white;
+        border-style: solid;
+        border-width: 1px;
+    }
+    #fogueteIMG{
+        position:absolute;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    #chaoIMG {
+        position: absolute;
+        height: 100px;
+        width: 100%;
+        top: 51%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Mantém centralizado */
+        transition: transform 0.3s ease-in-out;
+    }
+    #linhaIMG {
+        position: absolute;
+        top: -100px; /* começa fora da tela */
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100px;
+        width: 100%;
+        opacity: 0;
+        transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        pointer-events: none; /* evita clique */
+        z-index: 10;
+    }
+
+
+#bicho {
+    display: none;
+}
+    #bichoMenu {
+        position: fixed;
+        top: 220px;
+        left: 0px;
+        width: 100vw;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px;
+        border-radius: 10px;
+        z-index: 1;
+        font-family: sans-serif;
+        display: block;
+        grid-template-columns: 1fr 1fr;
+    }
+    .tituloBicho {
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    #tituloUltimoSorteio{
+        font-weight: bold;
+    }
+    .txtBicho {
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: left;
+    }
+    #areaApostarBicho{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    #numApostaBicho{
+        width: 100px;
+    }
+    #tituloApostaBicho{
+        font-size: 18px;
+        width: auto;
+        height: auto;
+        font-weight: bold;
+        position: relative;
+        top: 4px;
+    }
+    #cartelaBicho{
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 90vw;
+        height: auto;
+        z-index: 10;
+        border-color:#ffeaa7;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+
+#miner{
+    display:none;
+}
+    #gridMiner {
+        display: grid;
+        gap: 5px;
+        margin-top: 20px;
+        z-index: 1000;
+    }
+    #gridMiner button {
+        padding: 0;
+        width: 8vh;
+        height: 8vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        background-color: #0f0f0f;
+    }
+    #gridMiner button img {
+        max-width: 100%;
+        max-height: 100%;
+        pointer-events: none;
+        z-index: 1002;
+        width: auto;
+        height: auto;
+    }
+    #fundoMenuMiner{
+        width: 100vw;
+        height: 15vh;
+        background-color: #0f0f0f;
+        z-index: 1000;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+    #menuMiner {
+        width: 100vw;
+        height: 10vh;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        z-index: 2000;
+        position: fixed;
+        bottom: 20px;
+        left: 40%;
+        transform: translateX(-50%);
+        align-content: center;
+        align-items: center;
+        justify-items: right;
+    }
+    #menuMiner button{
+        height: 50;
+        width: 50vw;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s, background-color 0.3s;
+        background-color: #0f0f0f;
+        color: #ffeaa7;
+        border-color:#ffeaa7;
+        border-radius: 8px;
+        font-weight: bold;
+        z-index: 2001;
+    }
+    #menuMiner button:active {
+        transform: scale(1.05);
+        background-color: #ffeaa7;
+        color: #0f0f0f;
+    }
+    #txtMenuMiner{
+        color: #ffeaa7;
+        font-weight: bold;
+        font-size: 100%;
+        font-family: sans-serif;
+    }

@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fortune Fox</title>
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleLandscape.css" media="(orientation: landscape)">
+    <link rel="stylesheet" href="stylePortrait.css" media="(orientation: portrait)">
+
 </head>
-<body>
-<div id="telaLogin" class="tela ativa">
+<body onkeydown="if(event.key === 'Escape') voltar()">
+<div id="telaLogin">
     <div id="fundo">
         <div id="loginHome">
             <div id="logoLogin"><img src="src/logo-png.png" alt="tipografia"></div>
             <div id="loginBox">
-                <input type="text" name="user" id="user" placeholder="Usuário">
-                <input type="password" name="senha" id="senha" placeholder="Senha">
+                <input type="text" name="user" id="user" placeholder="Usuário" onkeydown="if(event.key === 'Enter') document.getElementById('senha').focus()">
+                <input type="password" name="senha" id="senha" placeholder="Senha" onkeydown="if(event.key === 'Enter') logar()">
                 <button id="botaoLogin" onclick="logar()">Entrar</button> 
             </div>
 
@@ -22,7 +24,7 @@
     </div>
 </div>
 <div id="telaHome" class="tela">
-    <div id="fundo">
+    <div id="fundo2">
         <div id="home">
             <div id="header">
                 <div id="logoHome">
@@ -30,54 +32,81 @@
                 </div>
                 <div id="userInfo">
                     Bem-vindo, <span id="nomeUsuario">Usuário</span>!
-                    <button id="botaoSair" onclick="voltar()">Voltar</button>
+                    <button id="botaoSair"  onclick="voltar()">Voltar</button>
                 </div>
             </div>
 
             <div id="conteudoHome"> <!--colocar os jogos aqui em formas de quadrados acessaveis-->
                 <div id="mascara"></div>
                 <div id="fundoGrid"></div>
-                <div class="grid-2x2">
+                <div id="grid-2x2">
                     <button id="btRoleta" onclick="roleta()">ROLETA</button>
-                    <button id="btFoguete" onclick="foguete()">FOGUETINHO</button>
+                    <button id="btFoguete" onclick="foguete()">FOGUETE</button>
                     <button id="btBicho" onclick="jogoDoBicho()">JOGO DO BICHO</button>
-                    <button id="btMiner" onclick="miner()">MINER</button>
+                    <button id="btMiner" onclick="miner(-2)">MINER</button>
                 </div>
             </div>
 
             <div id="roleta"></div>
             <div id="foguete">
-                <div id="multiplicadorDisplay">0.00x</div>
-                <div id="statusFoguetinho">Faça sua aposta e clique em "Decolar"!</div>
-                <div style="display: flex; justify-content: center;">
-                    <button id="btDecolar">Decolar</button>
-                    <button id="btParar" disabled>Parar</button>
+                <div id="menuFoguete">
+                    <div id="multiplicadorDisplay">0.00x</div>
+                    <div id="statusFoguete">Faça sua aposta e clique em "Decolar"!</div>
+                    <div style="display: flex; justify-content: center;">
+                        <button id="btDecolar">Decolar</button>
+                        <button id="btParar" disabled>Parar</button>
+                    </div>
+                </div>
+                <div id="displayFogueteAnimation" style="position: relative; justify-self: center;">
+                    <img id="fogueteIMG" src="src/foguete/foguete.png">
+                    <img id="chaoIMG" src="src/foguete/chao.png">
+                    <img id="linhaIMG" src="src/foguete/linha.png">
                 </div>
             </div>
             <div id="bicho">
+                <img id="cartelaBicho" src="src/jogoDoBicho/cartelaBicho.jpg">
                 <div id="bichoMenu">
                     <div id="tituloUltimoSorteio" class="tituloBicho">Último sorteio</div>
                     <div id="ultimoSorteio" class="txtBicho"></div>
                     <div id="horaUltimoSorteio" class="txtBicho"></div>
                     <div id="apostaFeita" class="txtBicho"></div>
                     <div id="valorApostaFeita" class="txtBicho"></div>
-                    <div id="tituloApostaBicho" class="tituloBicho">Apostar</div>
-                    <div>
+                    <div id="areaApostarBicho">
+                        <div id="tituloApostaBicho" class="tituloBicho">Apostar:</div>
                         <input id="numApostaBicho" placeholder="Número (0-99)" type="number" min="0" max="99">
                         <button id="apostarBicho">Apostar</button>
                     </div>
                 </div>
             </div>
-            <div id="miner"></div>
+            <div id="miner">
+                <div id="fundoMenuMiner"></div>
+                <div id="menuMiner">
+                    <div id="txtMenuMiner">Multiplicador: 1x</div>
+                    <button id="btMiner0" onclick="miner(0)">Começar</button></div>
+                                   
+                <div id="gridMiner">
+
+                </div>
+            </div>
 
             <div id="financeiroJogos">
-                <div id="tituloSaldo">Saldo</div>
-                <div id="saldo"></div>
+                <div class="infoFinanceiro">
+                    <div id="tituloSaldoPortrait">Saldo</div>
+                    <div id="saldoPortrait"></div>
+                </div>
+                <div class="infoFinanceiro">
+                    <div id="txtValorApostandoPortrait">Valor apostando:</div>
+                    <div id="valorApostandoPortrait"></div>
+                </div>
+                <div id="tituloSaldo" class="financeiroLandscape">Saldo</div>
+                <div id="saldo" class="financeiroLandscape"></div>
                 <input type="text" id="valorAposta" placeholder="Valor da aposta">
-                <button id="apostar" onclick="apostar(0)">Apostar</button>
-                <button id="retirar" onclick="apostar(1)">Retirar</button>
-                <div id="txtValorApostando">Valor apostando:</div>
-                <div id="valorApostando"></div>
+                <button id="apostar" title="(Enter) Transfere valor para a aposta" onclick="apostar(0)">Apostar</button>
+                <button id="retirar" title="(Shift+Enter) Transfere valor para o saldo" onclick="apostar(1)">Retirar</button>
+                <button id="retirarTudo" title="(Alt+Enter) Transfere tudo para o saldo" onclick="apostar(2)">Retirar tudo</button>
+
+                <div id="txtValorApostando" class="financeiroLandscape">Valor apostando:</div>
+                <div id="valorApostando" class="financeiroLandscape"></div>
             </div>
 
         </div>
